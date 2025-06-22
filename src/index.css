@@ -1,0 +1,112 @@
+:root {
+    --grey-1: hsl(212, 33%, 89%);
+    --grey-2: hsl(210, 31%, 80%);
+    --grey-3: hsl(211, 27%, 70%);
+    --grey-4: hsl(209, 23%, 60%);
+    --grey-5: hsl(210, 22%, 49%);
+    --grey-6: hsl(209, 28%, 39%);
+    --grey-7: hsl(209, 34%, 30%);
+    --grey-8: hsl(211, 39%, 23%);
+    --grey-9: hsl(209, 61%, 16%);
+    --white: #fff;
+    --black: #000;
+    --light-grey: rgba(107, 107, 107, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--white);
+}
+
+.navbar,
+.home {
+    min-width: 100vw;
+}
+
+/* start of navbar */
+
+.navbar {
+    background-color: #a8a8a8;
+}
+
+.navbar nav {
+    padding: 20px 170px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar nav div {
+    display: flex;
+    flex-direction: row;
+}
+
+/* start of title styles */
+.navbar .navbar-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar .navbar-heading h1 {
+    color: #fff;
+    text-shadow: 3px 3px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
+    color: #ffd700;
+    font-size: 40px;
+    margin-right: 12px;
+    padding-right: 3px;
+    font-family: "Instrument Sans", sans-serif;
+}
+
+.navbar .navbar-heading img {
+    max-height: 48px;
+    max-width: 48px;
+}
+/* end of title styles */
+
+/* start of nav buttons */
+.navbar .nav-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-buttons button {
+    min-height: 35px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 16px;
+    gap: 5px;
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+.navbar .nav-buttons .home-btn {
+    min-width: 100px;
+    margin-right: 22px;
+}
+
+.navbar .nav-buttons .favourites-btn {
+    min-width: 150px;
+}
+
+.navbar .nav-buttons button img {
+    width: 25px;
+    height: 25px;
+}
+/* end of nav buttons */
+/* end of navbar */
+
+/* start of body */
+
+/* end of body */
