@@ -23,6 +23,7 @@
 
 body {
     background-color: var(--white);
+    backdrop-filter: blur(6px);
 }
 
 .navbar,
@@ -31,7 +32,6 @@ body {
 }
 
 /* start of navbar */
-
 .navbar {
     background-color: #a8a8a8;
 }
@@ -108,5 +108,27 @@ body {
 /* end of navbar */
 
 /* start of body */
+.home {
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+    overflow: hidden;
+}
 
+.home div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+}
+
+.home div h1 {
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 30px;
+}
+
+.home button {
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+}
 /* end of body */
