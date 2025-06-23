@@ -1,46 +1,28 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "./index.css";
 import Navbar from "./components/Navbar";
-import pokemonNames from "./pokemonNames";
+import Home from "./components/Home";
+import Game from "./components/Game";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-    const [currentPokemon, setCurrentPokemon] = useState('');
-
-    // Get a single random Pokemon name
-    const getRandomPokemon = () => {
-        const randomIndex = Math.floor(Math.random() * pokemonNames.length);
-        return pokemonNames[randomIndex];
-    };
-
-    const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
-
-    async function getPokemon() {
-        try {
-            let pokemonName = getRandomPokemon();
-            let url = BASE_URL + pokemonName;
-            let res = await fetch(url);
-            let pokemon = await res.json();
-            setCurrentPokemon(pokemon);
-
-            if (!res.ok) {
-                throw new Error(`Pokemon not found: ${pokemonName}`);
-            }
-        } catch (err) {
-            console.log(`An error has occured. Error: ${err}`);
-            return null;
-        }
-    }
-
+    const [currentScreen, setCurrentScreen] = useState("home");
+    
     return (
         <>
             <Navbar></Navbar>
-            <section className="home">
-                <div>
-                    <h1>Welcome to the pokemon guessing game. Click play to begin the game</h1>
-                    <button onClick={getPokemon}>Play</button>
-                </div>
-            </section>
+            <Routes>
+                <Route path="/" element={<Home/>}></Route>
+                <Route path="/guessing-game" element={<Game/>}></Route>
+            </Routes>
+
+            {currentScreen === "home" && (
+                <Home onHome={()=> setCurrentScreen("game")} />
+            )}
+            
+            {currentScreen === "game" && (<Game />)}
+            
         </>
     );
 }
