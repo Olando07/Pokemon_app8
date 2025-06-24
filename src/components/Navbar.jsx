@@ -1,4 +1,5 @@
 import "../index.css";
+import { Link } from "react-router-dom";
 import pikachu from "../assets/pikachu3.png";
 import home from "../assets/lucario.png";
 import star from "../assets/pikachu_icon2.png";
@@ -12,14 +13,18 @@ function Navbar() {
                     <img src={pikachu} alt="pikachu" />
                 </div>
                 <div className="nav-buttons">
-                    <button className="home-btn">
-                        <img src={home} alt="" id="home" />
-                        <p>Home</p>
-                    </button>
-                    <button className="favourites-btn">
-                        <img src={star} alt="" id="favourite" />
-                        <p>Your Collection</p>
-                    </button>
+                    <Link to="/Pokemon_app/">
+                        <button className="home-btn">
+                            <img src={home} alt="" id="home" />
+                            <p>Home</p>
+                        </button>
+                    </Link>
+                    <Link to="/Pokemon_app/favourties">
+                        <button className="favourites-btn">
+                            <img src={star} alt="" id="favourite" />
+                            <p>Your Collection</p>
+                        </button>
+                    </Link>
                 </div>
             </nav>
         </section>

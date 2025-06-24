@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../index.css";
 import pokemonNames from "../pokemonNames";
 
-function Game() {
-    const [currentPokemon, setCurrentPokemon] = useState();
-
+function Game({collection, setCollection}) {
+    const [currentPokemon, setCurrentPokemon] = useState({});
+    // User guess check and collection updation
+    const [guess, setGuess] = useState("");
+    const [attempts, setAttempts] = useState(0);
+    const [feedback, setFeedback] = useState("");
+    
     // Get a single random Pokemon name
     const getRandomPokemon = () => {
         const randomIndex = Math.floor(Math.random() * pokemonNames.length);
@@ -26,8 +30,8 @@ function Game() {
                 picture: pokemon.sprites.front_default,
             };
 
-            // console.log(newPokemon);
             setCurrentPokemon(newPokemon);
+            setAttempts(0);
 
             if (!res.ok) {
                 throw new Error(`Pokemon not found: ${pokemonName}`);
@@ -40,19 +44,55 @@ function Game() {
 
     useEffect(() => {
         getPokemon();
-    }, [])
+    }, []);
 
     useEffect(() => {
         localStorage.setItem("current_Pokemon", JSON.stringify(currentPokemon));
     }, [currentPokemon]);
 
+
+    const checkPokemon = () => {
+        if (!guess.trim()) return;
+
+        const newAttempts = attempts + 1;
+        setAttempts(newAttempts);
+
+        if (guess.toLowerCase() === currentPokemon.name) {
+            setCollection((prev) => [...prev, currentPokemon]);
+            setFeedback(`Congrats!!😌You caught ${currentPokemon.name}`);
+            getPokemon();
+        } else if (newAttempts >= 3) {
+            setFeedback(`NoOooOO!😔😓The pokemon was ${currentPokemon.name}`);
+            getPokemon();
+        } else {
+            const remaining = 3 - newAttempts;
+            setFeedback(`Wrong!!!💀 ${remaining} attempt${remaining > 1 ? "s" : ""} are left`);
+        }
+
+        setGuess("");
+    };
+
+    const handleClick = () => {
+        checkPokemon();
+    }
+
     return (
         <section className="game">
-            <div>
-                <img src={currentPokemon.picture} alt="" />  
+            <div className="overlay">
+                <div className="pokemon">
+                    <img src={currentPokemon.picture} alt={currentPokemon.name} />
+                </div>
+                <h1>Guess!!! Who’s that pokemon?</h1>
+                <div className="user-guess">
+                    <label htmlFor="guess">Your Guess:</label>
+                    <input id="guess" value={guess} onChange={(e) => setGuess(e.target.value)} onKeyPress={(e) => e.key === "Enter" && checkPokemon()} type="text" placeholder="Enter a Pokemon name" />
+                    <button onClick={handleClick}>Guess</button>
+                </div>
+                {feedback && <p>{feedback}</p>}
+                <p>Attempts: {attempts} out of 3</p>
             </div>
         </section>
     );
-};
+}
 
 export default Game;
