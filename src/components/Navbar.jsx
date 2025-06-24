@@ -19,7 +19,7 @@ function Navbar() {
                             <p>Home</p>
                         </button>
                     </Link>
-                    <Link to="/Pokemon_app8/favourites">
+                    <Link to="/favourites">
                         <button className="favourites-btn">
                             <img src={star} alt="" id="favourite" />
                             <p>Your Collection</p>
