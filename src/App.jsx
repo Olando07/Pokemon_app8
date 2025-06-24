@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./App.css";
 import "./index.css";
 import Navbar from "./components/Navbar";
@@ -9,9 +9,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
     const [collection, setCollection] = useState(localStorage.getItem("collection") ? JSON.parse(localStorage.getItem("collection")) : []);
-    useEffect(() => {
-            localStorage.setItem("collection", JSON.stringify(collection));
-    }, [collection]);
+    
 
     
     return (

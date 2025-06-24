@@ -50,6 +50,9 @@ function Game({collection, setCollection}) {
         localStorage.setItem("current_Pokemon", JSON.stringify(currentPokemon));
     }, [currentPokemon]);
 
+    useEffect(() => {
+        localStorage.setItem("collection", JSON.stringify(collection));
+    }, [collection]);
 
     const checkPokemon = () => {
         if (!guess.trim()) return;
