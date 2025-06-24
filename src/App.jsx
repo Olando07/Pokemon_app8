@@ -13,6 +13,7 @@ function App() {
             localStorage.setItem("collection", JSON.stringify(collection));
     }, [collection]);
 
+    
     return (
         <>
             <Navbar></Navbar>
