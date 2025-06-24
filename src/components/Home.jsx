@@ -7,7 +7,7 @@ function Home() {
         <section className="home">
             <div>
                 <h1>Welcome to the pokemon guessing game.</h1> <h1>Click play to begin the game</h1>
-                <Link to="/Pokemon_app/guessing-game">
+                <Link to="/Pokemon_app8/guessing-game">
                     <button>Play</button>
                 </Link>
             </div>

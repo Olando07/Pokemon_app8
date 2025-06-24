@@ -16,10 +16,10 @@ function App() {
     return (
         <>
             <Navbar></Navbar>
-            <Routes basename="/Pokemon_app">
-                <Route path="Pokemon_app/" element={<Home></Home>}></Route>
-                <Route path="Pokemon_app/guessing-game" element={<Game collection={collection} setCollection={setCollection}></Game>}></Route>
-                <Route path="Pokemon_app/favourties" element={<Favourites collection={collection}></Favourites>}></Route>
+            <Routes basename="/Pokemon_app8">
+                <Route path="Pokemon_app8/" element={<Home></Home>}></Route>
+                <Route path="Pokemon_app8/guessing-game" element={<Game collection={collection} setCollection={setCollection}></Game>}></Route>
+                <Route path="Pokemon_app8/favourties" element={<Favourites collection={collection}></Favourites>}></Route>
             </Routes>
         </>
     );
