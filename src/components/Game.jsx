@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
+import { useCollection } from "../context/CollectionContext";
 import pokemonNames from "../pokemonNames";
 
-function Game({collection, setCollection}) {
+function Game() {
+    const { setCollection } = useCollection();
     const [currentPokemon, setCurrentPokemon] = useState({});
     // User guess check and collection updation
     const [guess, setGuess] = useState("");
@@ -50,9 +52,6 @@ function Game({collection, setCollection}) {
         localStorage.setItem("current_Pokemon", JSON.stringify(currentPokemon));
     }, [currentPokemon]);
 
-    useEffect(() => {
-        localStorage.setItem("collection", JSON.stringify(collection));
-    }, [collection]);
 
     const checkPokemon = () => {
         if (!guess.trim()) return;

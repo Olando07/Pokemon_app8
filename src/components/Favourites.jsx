@@ -1,14 +1,10 @@
 import React from 'react';
 import "../index.css";
+import { useCollection } from "../context/CollectionContext";
 import PokemonCard from './PokemonCard';
 
 function Favourites() {
- 
-    let collection = JSON.parse(localStorage.getItem("collection"));
-        console.log("Collection type:", typeof collection);
-        console.log("Collection value:", collection);
-        console.log("Is array?", Array.isArray(collection));
-
+    const { collection } = useCollection();
 
     return (
         <div className="favourites">
