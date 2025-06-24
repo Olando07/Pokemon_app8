@@ -16,14 +16,12 @@ export const CollectionProvider = ({ children }) => {
     const [collection, setCollection] = useState(() => {
         try {
             const storedColllection = localStorage.getItem("collection");
-            console.log("unparsed data", storedColllection);
 
             if (!storedColllection) {
                 return [];
             }
 
             const parsedCollection = JSON.parse(storedColllection);
-            console.log("parsed data", parsedCollection);
 
             return Array.isArray(parsedCollection) ? parsedCollection : [];
         } catch (e) {
