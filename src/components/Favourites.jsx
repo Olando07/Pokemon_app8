@@ -2,8 +2,9 @@ import React from 'react';
 import "../index.css";
 import PokemonCard from './PokemonCard';
 
-function Favourites({ collection }) {
+function Favourites() {
  
+    let collection = JSON.parse(localStorage.getItem("collection"));
         console.log("Collection type:", typeof collection);
         console.log("Collection value:", collection);
         console.log("Is array?", Array.isArray(collection));
