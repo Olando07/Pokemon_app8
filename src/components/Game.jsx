@@ -4,13 +4,13 @@ import { useCollection } from "../context/CollectionContext";
 import pokemonNames from "../pokemonNames";
 
 function Game() {
-    const { setCollection } = useCollection();
+    const { collection, setCollection } = useCollection();
     const [currentPokemon, setCurrentPokemon] = useState({});
     // User guess check and collection updation
     const [guess, setGuess] = useState("");
     const [attempts, setAttempts] = useState(0);
     const [feedback, setFeedback] = useState("");
-    
+
     // Get a single random Pokemon name
     const getRandomPokemon = () => {
         const randomIndex = Math.floor(Math.random() * pokemonNames.length);
@@ -24,6 +24,11 @@ function Game() {
             let pokemonName = getRandomPokemon();
             let url = BASE_URL + pokemonName;
             let res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error(`Pokemon not found: ${pokemonName}`);
+            }
+
             let pokemon = await res.json();
             const newPokemon = {
                 name: pokemon.name,
@@ -32,12 +37,12 @@ function Game() {
                 picture: pokemon.sprites.front_default,
             };
 
+            if (collection.some((pokemon) => pokemon.id === newPokemon.id)) {
+                await getPokemon();
+            }
+
             setCurrentPokemon(newPokemon);
             setAttempts(0);
-
-            if (!res.ok) {
-                throw new Error(`Pokemon not found: ${pokemonName}`);
-            }
         } catch (err) {
             console.log(`An error has occured. Error: ${err}`);
             return null;
@@ -51,7 +56,6 @@ function Game() {
     useEffect(() => {
         localStorage.setItem("current_Pokemon", JSON.stringify(currentPokemon));
     }, [currentPokemon]);
-
 
     const checkPokemon = () => {
         if (!guess.trim()) return;
@@ -76,7 +80,7 @@ function Game() {
 
     const handleClick = () => {
         checkPokemon();
-    }
+    };
 
     return (
         <section className="game">
