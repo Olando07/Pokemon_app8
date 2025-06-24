@@ -13,13 +13,13 @@ function Navbar() {
                     <img src={pikachu} alt="pikachu" />
                 </div>
                 <div className="nav-buttons">
-                    <Link to="/">
+                    <Link to="Pokemon_app8/">
                         <button className="home-btn">
                             <img src={home} alt="" id="home" />
                             <p>Home</p>
                         </button>
                     </Link>
-                    <Link to="/favourites">
+                    <Link to="Pokemon_app8/favourites">
                         <button className="favourites-btn">
                             <img src={star} alt="" id="favourite" />
                             <p>Your Collection</p>

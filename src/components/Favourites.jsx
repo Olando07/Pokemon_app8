@@ -3,6 +3,11 @@ import "../index.css";
 import PokemonCard from './PokemonCard';
 
 function Favourites({ collection }) {
+ 
+        console.log("Collection type:", typeof collection);
+        console.log("Collection value:", collection);
+        console.log("Is array?", Array.isArray(collection));
+
 
     return (
         <div className="favourites">
@@ -14,8 +19,8 @@ function Favourites({ collection }) {
                         name={pokemon.name}
                         types={pokemon.types}
                         picture={pokemon.picture}
-                    />)
-                })}
+                        />
+                    )})}
             </div>
         </div>
     );
