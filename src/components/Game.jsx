@@ -91,7 +91,7 @@ function Game() {
                 <h1>Guess!!! Who’s that pokemon?</h1>
                 <div className="user-guess">
                     <label htmlFor="guess">Your Guess:</label>
-                    <input id="guess" value={guess} onChange={(e) => setGuess(e.target.value)} onKeyPress={(e) => e.key === "Enter" && checkPokemon()} type="text" placeholder="Enter a Pokemon name" />
+                    <input id="guess" value={guess} onChange={(e) => setGuess(e.target.value)} onKeyUp={(e) => e.key === "Enter" && checkPokemon()} type="text" placeholder="Enter a Pokemon name" />
                     <button onClick={handleClick}>Guess</button>
                 </div>
                 {feedback && <p>{feedback}</p>}
