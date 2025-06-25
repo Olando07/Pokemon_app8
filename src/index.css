@@ -223,7 +223,7 @@ body {
 /* start of favourites page */
 .pokemon-card {
     border: 1px solid #000;
-    max-width: 200px;
+    max-width: 220px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -233,6 +233,7 @@ body {
 .pokemon-card img {
     min-width: 100px;
     min-height: 100px;
+    margin: 5px 10px 0;
 }
 
 .pokemon-card h3 {
