@@ -10,6 +10,7 @@ function Game() {
     const [guess, setGuess] = useState("");
     const [attempts, setAttempts] = useState(0);
     const [feedback, setFeedback] = useState("");
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     // Get a single random Pokemon name
     const getRandomPokemon = () => {
@@ -86,23 +87,25 @@ function Game() {
         checkPokemon();
     };
 
+    useEffect(() => {
+		setImageLoaded(false);
+    }, [currentPokemon]);
+    
     return (
-        <section className="game">
-            <div className="overlay">
-                <div className="pokemon">
-                    <img src={currentPokemon.picture} alt={currentPokemon.name} />
-                </div>
-                <h1>Guess!!! Who’s that pokemon?</h1>
-                <div className="user-guess">
-                    <label htmlFor="guess">Your Guess:</label>
-                    <input id="guess" value={guess} onChange={(e) => setGuess(e.target.value)} onKeyUp={(e) => e.key === "Enter" && checkPokemon()} type="text" placeholder="Enter a Pokemon name" />
-                    <button onClick={handleClick}>Guess</button>
-                </div>
-                {feedback && <p>{feedback}</p>}
-                <p>Attempts: {attempts} out of 3</p>
-            </div>
-        </section>
-    );
+		<section className="game">
+			<div className="overlay">
+				<div className="pokemon">{currentPokemon.picture && <img src={currentPokemon.picture} alt={currentPokemon.name} onLoad={() => setImageLoaded(true)} style={{ display: currentPokemon.picture ? "block" : "none" }} />}</div>
+				<h1>Guess!!! Who’s that pokemon?</h1>
+				<div className="user-guess">
+					<label htmlFor="guess">Your Guess:</label>
+					<input id="guess" value={guess} onChange={(e) => setGuess(e.target.value)} onKeyUp={(e) => e.key === "Enter" && checkPokemon()} type="text" placeholder="Enter a Pokemon name" />
+					<button onClick={handleClick}>Guess</button>
+				</div>
+				{feedback && <p>{feedback}</p>}
+				<p>Attempts: {attempts} out of 3</p>
+			</div>
+		</section>
+	);
 }
 
 export default Game;
