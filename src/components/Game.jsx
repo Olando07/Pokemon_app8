@@ -94,7 +94,7 @@ function Game() {
     return (
 		<section className="game">
 			<div className="overlay">
-				<div className="pokemon">{currentPokemon.picture && <img src={currentPokemon.picture} alt={currentPokemon.name} onLoad={() => setImageLoaded(true)} style={{ display: currentPokemon.picture ? "block" : "none" }} />}</div>
+				<div className="pokemon">{currentPokemon.picture && <img src={currentPokemon.picture} onLoad={() => setImageLoaded(true)} />}</div>
 				<h1>Guess!!! Who’s that pokemon?</h1>
 				<div className="user-guess">
 					<label htmlFor="guess">Your Guess:</label>
