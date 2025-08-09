@@ -30,6 +30,10 @@ function Game() {
             }
 
             let pokemon = await res.json();
+            if (!pokemon || !pokemon.name || !pokemon.id || !pokemon.types || !pokemon.sprites || !pokemon.sprites.front_default) {
+				return getPokemon();
+			}
+
             const newPokemon = {
                 name: pokemon.name,
                 id: pokemon.id,
@@ -37,7 +41,7 @@ function Game() {
                 picture: pokemon.sprites.front_default,
             };
 
-            if (collection.some((pokemon) => pokemon.id === newPokemon.id)) {
+            if (collection.some((pokemon) => pokemon.id === newPokemon.id) || !newPokemon.picture) {
                 await getPokemon();
             }
 
@@ -63,7 +67,7 @@ function Game() {
         const newAttempts = attempts + 1;
         setAttempts(newAttempts);
 
-        if (guess.toLowerCase() === currentPokemon.name) {
+        if (guess.toLowerCase() === currentPokemon.name.toLowerCase()) {
             setCollection((prev) => [...prev, currentPokemon]);
             setFeedback(`Congrats!!😌You caught ${currentPokemon.name}`);
             getPokemon();

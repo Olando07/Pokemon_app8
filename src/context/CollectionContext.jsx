@@ -26,6 +26,7 @@ export const CollectionProvider = ({ children }) => {
             return Array.isArray(parsedCollection) ? parsedCollection : [];
         } catch (e) {
             console.log(`Error parsing data from local storage: ${e}`)
+            return [];
         }
     });
 
