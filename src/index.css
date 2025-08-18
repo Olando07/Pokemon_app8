@@ -41,7 +41,7 @@ body {
 }
 
 .navbar nav {
-    padding: 20px 170px;
+    padding: 20px 70px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -79,6 +79,7 @@ body {
 .navbar .nav-buttons {
     display: flex;
     align-items: center;
+    gap: 22px;
 }
 
 .navbar .nav-buttons button {
@@ -94,11 +95,11 @@ body {
     background-color: #2c2c2c;
     color: #fff;
     cursor: pointer;
+    border: none;
 }
 
 .navbar .nav-buttons .home-btn, .navbar .nav-buttons .game-btn {
     min-width: 130px;
-    margin-right: 22px;
 }
 
 .navbar .nav-buttons .favourites-btn {
@@ -118,8 +119,7 @@ body {
     justify-content: center;
     min-height: 100dvh;
     background: url(./assets/home_background.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     overflow: hidden;
 }
 
@@ -148,14 +148,14 @@ body {
     font-size: 22px;
     background-color: #68bee8;
     cursor: pointer;
+    border: none;
 }
 
 /* start of game page */
 .game {
     background: url(./assets/forest.jpg);
     min-height: 100dvh;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -168,7 +168,6 @@ body {
     max-width: 900px;
     min-height: 300px;
     max-height: 500px;
-    backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
 }
@@ -222,12 +221,14 @@ body {
     cursor: pointer;
     background-color: #2c2c2c;
     color: #fff;
+    border: none;
 }
 
 .game p {
     place-self: center;
     font-size: 20px;
     margin: 10px 0;
+    min-height: 24px;
 }
 /* end of game page */
 
@@ -239,12 +240,14 @@ body {
     justify-content: center;
     flex-direction: column;
     backdrop-filter: blur(100px);
+    border-radius: 15px;
 }
 
 .pokemon-card img {
-    min-width: 100px;
-    min-height: 100px;
-    margin: 5px 10px 0;
+    width: 130px;
+    height: 130px;
+    margin: 5px 4px 0;
+    align-self: center;
 }
 
 .pokemon-card h3 {
@@ -253,14 +256,13 @@ body {
 
 .pokemon-card p {
     place-self: center;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .favourites {
     background: url(./assets/favourites_background.jpg);
     min-height: 100dvh;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     overflow: hidden;
     color: #fff;
 }
@@ -269,7 +271,260 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
     row-gap: 50px;
-    margin: 80px 180px;
+    padding: 80px 180px;
 }
 /* end of favourites page */
 /* end of body */
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .navbar nav {
+        padding: 15px 40px;
+    }
+    
+    .navbar .navbar-heading h1 {
+        font-size: 32px;
+    }
+    
+    .navbar .nav-buttons {
+        gap: 15px;
+    }
+    
+    .navbar .nav-buttons button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .navbar .nav-buttons .home-btn,
+    .navbar .nav-buttons .game-btn {
+        min-width: 110px;
+    }
+    
+    .navbar .nav-buttons .favourites-btn {
+        min-width: 150px;
+    }
+    
+    .home div {
+        margin-top: 150px;
+        padding: 30px;
+    }
+    
+    .home div h1 {
+        font-size: 26px;
+    }
+    
+    .game .overlay {
+        margin-top: 80px;
+        min-width: 500px;
+        max-width: 700px;
+    }
+    
+    .game h1 {
+        font-size: 22px;
+        margin: 0 80px;
+    }
+    
+    .game .pokemon {
+        min-width: 500px;
+        min-height: 250px;
+    }
+    
+    .game .pokemon img {
+        min-width: 200px;
+        min-height: 200px;
+    }
+    
+    .favourites .overlay {
+        padding: 60px 100px;
+        row-gap: 40px;
+        grid-template-columns: auto auto auto;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar nav {
+        padding: 10px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .navbar .navbar-heading {
+        justify-content: center;
+    }
+    
+    .navbar .navbar-heading h1 {
+        font-size: 28px;
+        margin-right: 8px;
+    }
+    
+    .navbar .navbar-heading img {
+        max-height: 40px;
+        max-width: 40px;
+    }
+    
+    .navbar .nav-buttons {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .navbar .nav-buttons button {
+        font-size: 12px;
+        padding: 8px 12px;
+        min-height: 35px;
+    }
+    
+    .navbar .nav-buttons .home-btn,
+    .navbar .nav-buttons .game-btn {
+        min-width: 100px;
+    }
+    
+    .navbar .nav-buttons .favourites-btn {
+        min-width: 130px;
+    }
+    
+    .home div {
+        margin-top: 100px;
+        padding: 20px;
+        width: 90%;
+    }
+    
+    .home div h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+    
+    .home button {
+        width: 100px;
+        height: 32px;
+        font-size: 18px;
+    }
+    
+    .game .overlay {
+        margin-top: 20px;
+        min-width: 90%;
+        max-width: 100%;
+    }
+    
+    .game h1 {
+        font-size: 18px;
+        margin: 0 20px;
+    }
+    
+    .game .pokemon {
+        min-width: 100%;
+        min-height: 200px;
+    }
+    
+    .game .pokemon img {
+        min-width: 150px;
+        min-height: 150px;
+    }
+    
+    .game .user-guess {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    
+    .game .user-guess label {
+        font-size: 18px;
+    }
+    
+    .game .user-guess input {
+        width: 200px;
+        font-size: 16px;
+        padding: 8px;
+    }
+    
+    .game .user-guess button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .game p {
+        font-size: 16px;
+        margin: 8px 10px;
+        min-height: 20px;
+    }
+    
+    .favourites .overlay {
+        padding: 40px 20px;
+        row-gap: 30px;
+        grid-template-columns: auto auto;
+    }
+    
+    .pokemon-card img {
+        min-width: 80px;
+        min-height: 80px;
+    }
+    
+    .pokemon-card h3 {
+        font-size: 16px;
+    }
+    
+    .pokemon-card p {
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .navbar .navbar-heading h1 {
+        font-size: 24px;
+    }
+    
+    .navbar .nav-buttons button {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    
+    .navbar .nav-buttons .home-btn,
+    .navbar .nav-buttons .game-btn {
+        min-width: 80px;
+    }
+    
+    .navbar .nav-buttons .favourites-btn {
+        min-width: 110px;
+    }
+    
+    .home div h1 {
+        font-size: 20px;
+    }
+    
+    .home button {
+        width: 90px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .game h1 {
+        margin: 0 10px;
+    }
+    
+    .game .pokemon img {
+        min-width: 120px;
+        min-height: 120px;
+    }
+    
+    .game .user-guess input {
+        width: 180px;
+    }
+    
+    .favourites .overlay {
+        padding: 30px 10px;
+        grid-template-columns: auto;
+        justify-content: center;
+        row-gap: 20px;
+    }
+
+    .pokemon-card {
+        padding: 10px 20px 0;
+    }
+
+    .pokemon-card img {
+        width: 150px;
+        width: 150px;
+    }
+}
